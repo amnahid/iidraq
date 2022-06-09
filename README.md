@@ -15,7 +15,7 @@ This is a open source learning management system. Its specially developing for b
 
 ### Environment Variables
 \----------------------------------------------------  
-This variables will go on the .env file, make sure to put your own variables:
+This variables will go on the .env file, make sure to put your own values:
 
 ```
 PORT=SERVER_LISTENING_PORT_NUMBER
