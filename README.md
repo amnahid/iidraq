@@ -29,9 +29,9 @@ This is how the basic returned API will look like:
 
 ```json
 {
-  "status":STATUS_CODE,
+  "status":"STATUS_CODE",
   "message":"THIS IS A MESSAGE ABOUT WHAT HAPPENED ON THE SERVER SIDE",
-  "body":{DATA}
+  "body":"{DATA}"
 }
 ```
 
