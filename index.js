@@ -31,4 +31,10 @@ app.use(function (err, req, res, next) {
   });
 })
 
-  // basic structure {status:STATUS, message:"THIS IS A MESSAGE", body:{DATA}}
+/****************
+basic_API_structure = {
+  status:STATUS,
+  message:"THIS IS A MESSAGE",
+  body:{DATA}
+}
+****************/
