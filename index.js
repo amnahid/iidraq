@@ -12,11 +12,13 @@ const app = express()
 // cors
 app.use(cors());
 
+// ROUTERS ------->
 app.get('/', (req, res) => { res.send('hello world!') })
 
-
+// server listening port
 const SERVER_PORT = PORT || 3000
 
+// server initiated
 app.listen(SERVER_PORT, () => {
   console.log(`server is running on port ${SERVER_PORT}`);
 })

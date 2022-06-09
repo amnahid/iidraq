@@ -34,3 +34,10 @@ This is how the basic returned API will look like:
   body:{DATA}
 }
 ```
+
+&nbsp;  
+
+### Routes
+\----------------------------------------------------  
+A overview of routes of the applicatoin:
+
