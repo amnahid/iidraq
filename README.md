@@ -10,6 +10,18 @@ This is a open source learning management system. Its specially developing for b
 &nbsp;  
 &nbsp;  
 
+
+## **Architecture**
+&nbsp;
+ 
+This is the image of basic infrastructure of the application:   
+&nbsp;   
+<img src="content/architecture.png">
+
+&nbsp;  
+&nbsp;  
+
+
 ## **Documentation**
 &nbsp;
 
