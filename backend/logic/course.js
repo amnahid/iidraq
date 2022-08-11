@@ -1,27 +1,16 @@
-const { json } = require('body-parser')
 const courseDB = require('../database/models/course')
 
-// get '/course' (?page=pageNumber&limit=limitNumber)
-const getAllCourse = async (req, res) => {
-    try {
-        const page = req.query.page || 0
-        const pagePerLimit = req.query.limit || 10
-        const course = await courseDB.find({}).limit(pagePerLimit).skip(page * pagePerLimit)
-        console.log(page, pagePerLimit);
-        res.send(course)
-    } catch (e) {
-        console.log(e);
-    }
+// logic for course searching, all course viewing, sending recommended courses
+const courseGateway = async ({ pageNumber, limitPerPage, category, queryText }) => {
+    const course = await courseDB.find({}).limit(limitPerPage).skip(pageNumber * limitPerPage)
+    return course
 }
 
-// post '/course/create'
-const createCourse = async (req, res) => {
-    try {
-        const course = await courseDB.create(req.body)
-        res.send(course)
-    } catch (e) {
-        console.log(e);
-    }
+const courseManager = async (courseData) => {
+    const { title, metaDescription, description, authors, organization, thumbnail, curriculum, price } = courseData // extracting needed only values
+    const filteredCourseData = { title, metaDescription, description, authors, organization, thumbnail, curriculum, price } // declaring courseData obj to assigning needed only values in this
+    const course = await courseDB.create(filteredCourseData) // course data storing on DB
+    return course
 }
 
-module.exports = { getAllCourse, createCourse }
+module.exports = { courseGateway, courseManager }

@@ -1,7 +1,7 @@
 const express = require('express');
 const dotEnv = require('dotenv')
 const cors = require('cors');
-const route = require('./backend/routes/index')
+const route = require('./backend/routes/routes')
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 

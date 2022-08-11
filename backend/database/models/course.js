@@ -4,7 +4,7 @@ const courseSchema = new mongoose.Schema({
     title: String,
     metaDescription: String,
     description: String,
-    authors: String,
+    authors: [],
     organization: String,
     thumbnail: String,
     ratings: Number,
@@ -21,7 +21,7 @@ const courseSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
-    learningSummeries: String,
+    learningSummaries: String,
     students: [],
     testimonials: [],
 })
@@ -29,7 +29,7 @@ const courseSchema = new mongoose.Schema({
 module.exports = mongoose.model('course', courseSchema)
 
 
-const bulshit = {
+const bullshit = {
     "title": "String",
     "metaDescription": "String",
     "description": "String",
@@ -40,7 +40,7 @@ const bulshit = {
     "price": 567,
     "badges": [],
     "genres": [],
-    "learningSummeries": "String",
+    "learningSummaries": "String",
     "students": [],
     "testimonials": []
 }

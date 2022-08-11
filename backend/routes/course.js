@@ -1,8 +1,8 @@
 const course = require('express').Router();
-const {getAllCourse, createCourse} = require('../logic/course')
+const {getCourses, createCourse} = require('../controllers/course')
 
 // getting all course
-course.get('/', getAllCourse)
+course.get('/', getCourses)
 
 // creating course
 course.post("/create", createCourse)
