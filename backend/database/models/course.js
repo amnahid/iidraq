@@ -29,18 +29,18 @@ const courseSchema = new mongoose.Schema({
 module.exports = mongoose.model('course', courseSchema)
 
 
-const bullshit = {
-    "title": "String",
-    "metaDescription": "String",
-    "description": "String",
-    "authors": "String",
-    "organization": "String",
-    "thumbnail": "String",
-    "curriculum": "String",
-    "price": 567,
-    "badges": [],
-    "genres": [],
-    "learningSummaries": "String",
-    "students": [],
-    "testimonials": []
-}
+// {
+//     "title": "String",
+//     "metaDescription": "String",
+//     "description": "String",
+//     "authors": "String",
+//     "organization": "String",
+//     "thumbnail": "String",
+//     "curriculum": "String",
+//     "price": 567,
+//     "badges": [],
+//     "genres": [],
+//     "learningSummaries": "String",
+//     "students": [],
+//     "testimonials": []
+// }
