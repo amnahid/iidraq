@@ -7,7 +7,7 @@ const courseGateway = async ({ pageNumber, limitPerPage, queryValues }) => {
 }
 
 // logic for course creating
-const CourseCreater = async (courseData) => {
+const CourseCreator = async (courseData) => {
     const { title, metaDescription, description, authors, organization, thumbnail, curriculum, price } = courseData // extracting needed only values
     const filteredCourseData = { title, metaDescription, description, authors, organization, thumbnail, curriculum, price } // assigning needed only values in here to simplify
     const course = await CourseDB.create(filteredCourseData) // course data storing on DB
@@ -39,4 +39,4 @@ const courseUpdater = async (courseData) => {
     return course
 }
 
-module.exports = { courseGateway, CourseCreater, courseDelete, courseUpdater }
+module.exports = { courseGateway, CourseCreator, courseDelete, courseUpdater }

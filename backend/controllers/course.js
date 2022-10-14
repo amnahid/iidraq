@@ -1,7 +1,28 @@
-const { courseGateway, CourseCreater, courseDelete, courseUpdater } = require("../logic/course")
+const { courseGateway, CourseCreator, courseDelete, courseUpdater } = require("../logic/course")
+const { COURSE } = require('../utilities/error_response') // error response for course
+
+// post '/course/create'
+const createCourse = async (req, res, next) => {
+    try {
+        // storing course data on DB
+        const course = await CourseCreator(req.body) // creating course
+        // response
+        res.status(201).send({
+            status: 201,
+            message: `Your "${course.title}" Course created successfully`,
+            body: course
+        })
+    } catch (e) {
+        // response
+        next({
+            status: COURSE.ERR_IN_COURSE_CREATION.status,
+            message: COURSE.ERR_IN_COURSE_CREATION.message
+        })
+    }
+}
 
 // get '/course' (?page=pageNumber&limit=limitNumber)
-const getCourses = async (req, res) => {
+const getCourses = async (req, res, next) => {
     try {
         const pageNumber = req.query.page || 0 // Page number
         const limitPerPage = req.body.limit || 10 // viewing course per page
@@ -14,50 +35,10 @@ const getCourses = async (req, res) => {
             body: courses
         })
     } catch (e) {
-        console.log(e);
-    }
-}
-
-// post '/course/create'
-const createCourse = async (req, res) => {
-    try {
-        // storing course data on DB
-        const course = await CourseCreater(req.body) // creating course
         // response
-        res.status(201).send({
-            status: 201,
-            message: `Your "${course.title}" Course created successfully`,
-            body: course
-        })
-    } catch (e) {
-        console.log(e);
-        // response
-        res.status(500).send({
-            status: 500,
-            message: `Error occurred while creating course`,
-            body: null
-        })
-    }
-}
-
-// delete '/course/delete'
-const deleteCourse = async (req, res) => {
-    // deleting course data of DB
-    const course = await courseDelete(req.body.id) // deleting course
-    if (course) { // failed to delete the course
-        // response
-        res.status(500).send({
-            status: 500,
-            message: `Error occurred while deleting course`,
-            body: null
-        })
-
-    } else { // succeed to delete the course
-        // response
-        res.status(200).send({
-            status: 200,
-            message: `Your Course deleted successfully`,
-            body: null
+        next({
+            status: COURSE.ERR_IN_GETTING_COURSE.status,
+            message: COURSE.ERR_IN_GETTING_COURSE.message
         })
     }
 }
@@ -74,11 +55,30 @@ const updateCourse = async (req, res) => {
             body: course
         })
     } catch (e) {
-        console.log(e);
         // response
-        res.status(500).send({
-            status: 500,
-            message: `Error occurred while updating course`,
+        next({
+            status: COURSE.ERR_IN_UPDATING_COURSE.status,
+            message: COURSE.ERR_IN_UPDATING_COURSE.message
+        })
+    }
+}
+
+// delete '/course/delete'
+const deleteCourse = async (req, res) => {
+    // deleting course data of DB
+    const course = await courseDelete(req.body.id) // deleting course
+    if (course) { // failed to delete the course
+        // response
+        next({
+            status: COURSE.ERR_IN_DELETING_COURSE.status,
+            message: COURSE.ERR_IN_DELETING_COURSE.message
+        })
+
+    } else { // succeed to delete the course
+        // response
+        res.status(200).send({
+            status: 200,
+            message: `Your Course deleted successfully`,
             body: null
         })
     }

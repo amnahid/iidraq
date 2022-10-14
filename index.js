@@ -35,10 +35,9 @@ app.listen(SERVER_PORT, () => {
 })
 
 // error handler middleware
-app.use(function (err, req, res, next) {
-  console.error(err.stack)
-  res.status(500).send({
-    status: 500,
+app.use((err, req, res, next) => {
+  res.status(err.status).send({
+    status: err.status,
     message: err.message,
     body: {}
   });
