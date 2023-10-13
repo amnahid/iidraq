@@ -51,6 +51,6 @@ This is how the basic returned API will look like:
 
 ### Routes
 \----------------------------------------------------  
-A overview of routes of the applicatoin:
+A overview of routes of the application:
 
 
